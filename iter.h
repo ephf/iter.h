@@ -41,7 +41,7 @@
 #define ITER_H
 
 #ifndef ITERDEF
-#define ITERDEF
+#define ITERDEF static inline
 #endif
 
 #include <stdlib.h>
@@ -60,7 +60,7 @@ typedef union Peekable Peekable;
 typedef struct LinIter {
 	void* (*next)(struct LinIter* self);
 	size_t item_size;
-	uint8_t* bottom;
+	unsigned char* bottom;
 	size_t items_left;
 } LinIter;
 
@@ -193,7 +193,7 @@ ITERDEF void* Peekable_next(Peekable* self) {
 
 ITERDEF Iter liter(void* data, size_t count, size_t item_size) {
 	return (Iter) { ._lin = {
-		&LinIter_next, item_size, (uint8_t*) data, count,
+		&LinIter_next, item_size, (unsigned char*) data, count,
 	}};
 }
 
