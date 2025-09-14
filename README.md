@@ -8,7 +8,6 @@
 #include <stdio.h>
 #include <assert.h>
 
-#define ITER_IMPL
 #include "iter.h"
 
 bool filter_odds(int* item) {
